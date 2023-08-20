@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Tarefas.Pages.TaskPage"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#f5f6fa">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="5*" />
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Label Margin="20,40,0,0"
+                       TextColor="Black">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Segunda-feira"
+                                  FontFamily="MontRegular"
+                                  FontSize="20" />
+                            <Span Text="&#10;" />
+                            <Span Text="3 Tarefas"
+                                  FontFamily="MontRegular"
+                                  FontSize="14"
+                                  TextColor="#888888" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Frame BackgroundColor="#6597fb"
+                       Grid.Column="1"
+                       CornerRadius="20"
+                       Margin="10,20,20,10">
+                    <Label HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
+                           TextColor="White">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="9"
+                                      FontFamily="MontMedium"
+                                      FontSize="20" />
+                                <Span Text="&#10;" />
+                                <Span Text="Fev"
+                                      FontFamily="MontLight"
+                                      FontSize="14" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </Frame>
+
+            </Grid>
+            <Frame Grid.Row="1"
+                   CornerRadius="30"
+                   TranslationY="30">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Button Text="+"
+                            BackgroundColor="#6597fb"
+                            CornerRadius="50"
+                            FontSize="36"
+                            TextColor="White"
+                            HorizontalOptions="End"
+                            VerticalOptions="End"
+                            WidthRequest="80"
+                            HeightRequest="80"
+                            TranslationY="-30"
+                            Clicked="NavigateToRegisterTask" />
+                </Grid>
+            </Frame>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
