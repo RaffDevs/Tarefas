@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Tarefas.Pages.TodoDetailPage"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#f5f6fa">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="5*" />
+            </Grid.RowDefinitions>
+            <Grid Padding="0, 20, 0, 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="3*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Frame BackgroundColor="Transparent"
+                       VerticalOptions="Start"
+                       Margin="10, 0, 0, 0">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Back" />
+                    </Frame.GestureRecognizers>
+                    <Image Source="back.png" />
+                </Frame>
+                <Frame Grid.Column="1"
+                       BackgroundColor="Transparent"
+                       VerticalOptions="Start"
+                       Margin="0,30,0,0"
+                       Padding="0,0,0,0">
+                    <Label Text="Compra café"
+                           FontSize="26"
+                           FontFamily="MontBold"
+                           TextColor="Black" />
+                </Frame>
+            </Grid>
+            <Frame Grid.Row="1"
+                   CornerRadius="30"
+                   TranslationY="30">
+                <StackLayout>
+                    <Label Text="03/03/2023" 
+                           FontSize="16"
+                           FontFamily="MontRegular"
+                           TextColor="Black"/>
+                    <Label Text="08:00 - 08:30"
+                           FontSize="16"
+                           FontFamily="MontRegular" 
+                           TextColor="Gray"/>
+                    <Label Text="Nota" 
+                           FontFamily="MontBold"
+                           FontSize="20"
+                           TextColor="Black"/>
+                    <Label Text="Comprar 4 unidades de café" 
+                           FontSize="14"
+                           FontFamily="MontRegular"
+                           TextColor="Black"/>
+                </StackLayout>
+            </Frame>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

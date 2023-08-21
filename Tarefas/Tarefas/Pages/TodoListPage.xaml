@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Tarefas.Pages.TaskPage"
+             x:Class="Tarefas.Pages.TodoListPage"
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="#f5f6fa">
     <ContentPage.Content>
@@ -65,6 +65,38 @@
                     <Grid.RowDefinitions>
                         <RowDefinition />
                     </Grid.RowDefinitions>
+                    <Label Text="Tarefa 01">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OpenTaskDetails"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                    <CollectionView x:Name="CvListTodo">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="4*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <CheckBox />
+                                    <Label Grid.Column="1">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span></Span>
+                                                <Span></Span>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </Grid>
+                                
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                    
                     <Button Text="+"
                             BackgroundColor="#6597fb"
                             CornerRadius="50"

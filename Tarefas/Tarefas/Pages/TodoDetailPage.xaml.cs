@@ -10,16 +10,16 @@ using Xamarin.Forms.Xaml;
 namespace Tarefas.Pages
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class RegisterTaskPage : ContentPage
+	public partial class TodoDetailPage : ContentPage
 	{
-		public RegisterTaskPage ()
+		public TodoDetailPage ()
 		{
 			InitializeComponent ();
 		}
 
-        private void CloseModal(object sender, EventArgs e)
+        private void Back(object sender, EventArgs e)
         {
-			Navigation.PopModalAsync();
+			Navigation.PopAsync();
         }
     }
 }

@@ -10,7 +10,7 @@ namespace Tarefas
         public App()
         {
             InitializeComponent();
-            var mainPage = new NavigationPage(new TaskPage());
+            var mainPage = new NavigationPage(new TodoListPage());
             MainPage = mainPage;
         }
 
