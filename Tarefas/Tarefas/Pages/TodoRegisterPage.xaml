@@ -45,20 +45,73 @@
 
                 <Frame Padding="0"
                        CornerRadius="0">
-                    <DatePicker x:Name="Date"
-                                BackgroundColor="White" />
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="FocusDatePicker" />
+                    </Frame.GestureRecognizers>
+                    <StackLayout Orientation="Horizontal"
+                                 Padding="15">
+                        <DatePicker IsVisible="False"
+                                    x:Name="Date"
+                                    BackgroundColor="White"
+                                    Unfocused="DatePickerUnfocus" />
+                        <Label Text="Data"  
+                               HorizontalOptions="FillAndExpand" 
+                               VerticalOptions="Center"
+                               FontFamily="MontRegular"
+                               FontSize="16"
+                               TextColor="Black"/>
+                        <Label Text=""
+                               x:Name="LbData"
+                               VerticalTextAlignment="Center"
+                               FontFamily="MontRegular"
+                               FontSize="16"
+                               TextColor="LightGray" />
+                        <Image Source="calendar.png" 
+                               HeightRequest="35" 
+                               WidthRequest="35"
+                               />
+                    </StackLayout>
+
                 </Frame>
 
                 <Frame Padding="0"
                        CornerRadius="0">
-                    <TimePicker x:Name="StartTime"
-                                BackgroundColor="White" />
-                </Frame>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="FocusTimePicker" />
+                    </Frame.GestureRecognizers>
+                    <StackLayout Orientation="Horizontal" Padding="15">
+                        <TimePicker x:Name="StartTime"
+                                    BackgroundColor="White"
+                                    IsVisible="False"
+                                    Unfocused="StartTime_Unfocused"/>
+                        <TimePicker x:Name="EndTime"
+                                    BackgroundColor="White"
+                                    IsVisible="False"
+                                    Unfocused="EndTime_Unfocused"/>
+                        <Label Text="Horário"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalOptions="Center"
+                               FontFamily="MontRegular"
+                               FontSize="16"
+                               TextColor="Black" />
 
-                <Frame Padding="0"
-                       CornerRadius="0">
-                    <TimePicker x:Name="EndTime"
-                                BackgroundColor="White" />
+                        <Label Text="28/05/2005"
+                               VerticalTextAlignment="Center"
+                               FontFamily="MontRegular"
+                               FontSize="16"
+                               TextColor="LightGray">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Inicio" 
+                                          x:Name="SpStartTime"/>
+                                    <Span Text=" - " />
+                                    <Span Text="Fim"
+                                          x:Name="SpEndTime"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+                    
                 </Frame>
 
                 <Frame Padding="0"
@@ -70,7 +123,7 @@
 
                 <Frame Padding="0"
                        CornerRadius="0">
-                    <Editor x:Name="Description" 
+                    <Editor x:Name="Description"
                             Placeholder="Nota"
                             BackgroundColor="White"
                             AutoSize="TextChanges" />
@@ -82,8 +135,8 @@
                         VerticalOptions="EndAndExpand"
                         HorizontalOptions="End"
                         Visual="Default"
-                        Padding="20, 10" 
-                        Clicked="SaveTodo"/>
+                        Padding="20, 10"
+                        Clicked="SaveTodo" />
             </StackLayout>
         </Frame>
     </ContentPage.Content>

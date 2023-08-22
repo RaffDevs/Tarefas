@@ -34,7 +34,7 @@
                        VerticalOptions="Start"
                        Margin="0,30,0,0"
                        Padding="0,0,0,0">
-                    <Label Text="Compra café"
+                    <Label Text="{Binding Name}"
                            FontSize="26"
                            FontFamily="MontBold"
                            TextColor="Black" />
@@ -44,19 +44,26 @@
                    CornerRadius="30"
                    TranslationY="30">
                 <StackLayout>
-                    <Label Text="03/03/2023" 
+                    <Label Text="{Binding Date}" 
                            FontSize="16"
                            FontFamily="MontRegular"
                            TextColor="Black"/>
-                    <Label Text="08:00 - 08:30"
-                           FontSize="16"
-                           FontFamily="MontRegular" 
-                           TextColor="Gray"/>
+                    <Label FontSize="16"
+                           FontFamily="MontRegular"
+                           TextColor="Gray">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{Binding StartTime}"/>
+                                <Span Text=" - "/>
+                                <Span Text="{Binding EndTime}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
                     <Label Text="Nota" 
                            FontFamily="MontBold"
                            FontSize="20"
                            TextColor="Black"/>
-                    <Label Text="Comprar 4 unidades de café" 
+                    <Label Text="{Binding Description}" 
                            FontSize="14"
                            FontFamily="MontRegular"
                            TextColor="Black"/>

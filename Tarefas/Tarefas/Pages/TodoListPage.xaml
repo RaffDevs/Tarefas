@@ -3,7 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Tarefas.Pages.TodoListPage"
              NavigationPage.HasNavigationBar="False"
-             BackgroundColor="#f5f6fa">
+             BackgroundColor="#f5f6fa"
+           >
+
     <ContentPage.Content>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -27,12 +29,14 @@
                         <FormattedString>
                             <Span Text="Segunda-feira"
                                   FontFamily="MontRegular"
-                                  FontSize="20" />
+                                  FontSize="20" 
+                                  x:Name="DayName"/>
                             <Span Text="&#10;" />
                             <Span Text="3 Tarefas"
                                   FontFamily="MontRegular"
                                   FontSize="14"
-                                  TextColor="#888888" />
+                                  TextColor="#888888" 
+                                  x:Name="TaskCount"/>
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
@@ -40,21 +44,34 @@
                        Grid.Column="1"
                        CornerRadius="20"
                        Margin="10,20,20,10">
-                    <Label HorizontalTextAlignment="Center"
-                           VerticalTextAlignment="Center"
-                           TextColor="White">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span Text="9"
-                                      FontFamily="MontMedium"
-                                      FontSize="20" />
-                                <Span Text="&#10;" />
-                                <Span Text="Fev"
-                                      FontFamily="MontLight"
-                                      FontSize="14" />
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OpenCalendar" />
+                    </Frame.GestureRecognizers>
+                    <StackLayout>
+                        <DatePicker x:Name="DPCalendar"
+                                    DateSelected="DPCalendar_DateSelected"
+                                    IsVisible="False"
+                                    BackgroundColor="Black"/>
+                        <Label HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               TextColor="White"
+                               Margin="0,10,0,0">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="9"
+                                          FontFamily="MontMedium"
+                                          FontSize="20" 
+                                          x:Name="DayMonth"/>
+                                    <Span Text="&#10;" />
+                                    <Span Text="Fev"
+                                          FontFamily="MontLight"
+                                          FontSize="14"
+                                          x:Name="MonthName"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+
                 </Frame>
 
             </Grid>
@@ -65,38 +82,64 @@
                     <Grid.RowDefinitions>
                         <RowDefinition />
                     </Grid.RowDefinitions>
-                    <Label Text="Tarefa 01">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OpenTaskDetails"/>
-                        </Label.GestureRecognizers>
-                    </Label>
 
-                    <CollectionView x:Name="CvListTodo">
+                    <CollectionView x:Name="CvListTodo"
+                                    EmptyView="Nenhuma tarefa cadastrada!">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="4*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition />
-                                    </Grid.RowDefinitions>
-                                    <CheckBox />
-                                    <Label Grid.Column="1">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span></Span>
-                                                <Span></Span>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                </Grid>
-                                
+                                <SwipeView BackgroundColor="White">
+                                    <SwipeView.RightItems>
+                                        <SwipeItems>
+                                            <SwipeItem Text="Excluir"
+                                                       BackgroundColor="IndianRed"
+                                                       Invoked="SwipeRemoveItem"
+                                                       CommandParameter="{Binding .}" />
+                                        </SwipeItems>
+                                    </SwipeView.RightItems>
+                                    <Grid Padding="0, 10">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="1*" />
+                                            <ColumnDefinition Width="4*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <CheckBox IsChecked="{Binding Done}"
+                                                  CheckedChanged="CheckBox_CheckedChanged"
+                                                  Color="Gray"/>
+                                        <Label x:Name="LbTodoName"
+                                               Grid.Column="1"
+                                               LineHeight="1.2"
+                                               >
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OpenTaskDetails"
+                                                                      CommandParameter="{Binding .}" />
+                                            </Label.GestureRecognizers>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding Name}" 
+                                                          FontFamily="MontBold"
+                                                          FontSize="20"
+                                                          TextColor="Black"/>
+                                                    <Span Text="&#10;" />
+                                                    <Span Text="{Binding StartTime}" 
+                                                          FontFamily="MontLight"
+                                                          FontSize="12"
+                                                          TextColor="LightGray"/>
+                                                    <Span Text=" - " />
+                                                    <Span Text="{Binding EndTime}"
+                                                        FontFamily="MontLight"
+                                                          FontSize="12"
+                                                          TextColor="LightGray"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </Grid>
+                                </SwipeView>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
-                    
+
                     <Button Text="+"
                             BackgroundColor="#6597fb"
                             CornerRadius="50"

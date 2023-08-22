@@ -7,7 +7,7 @@ using Android.OS;
 
 namespace Tarefas.Droid
 {
-    [Activity(Label = "Tarefas", Theme = "@style/MainTheme")]
+    [Activity(Label = "Tarefas", Theme = "@style/MainTheme", ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
